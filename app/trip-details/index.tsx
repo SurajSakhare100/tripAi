@@ -26,12 +26,20 @@ const TripDetails = () => {
 
   return (
     <ScrollView className="flex-1 bg-white">
+
       <Image
-        source={{
-          uri: `https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photo_reference=${locationInfo?.photoRef}&key=${process.env.EXPO_PUBLIC_GOOGLE_MAP_KEY}`,
-        }}
-        className="w-full h-72"
-      />
+                source={{
+                  uri: `https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8dHJpcHxlbnwwfHwwfHx8MA%3D%3D`}}
+                className={`w-full h-60 rounded-2xl mt-5 `}
+              />
+
+      {/* <Image
+        source={
+          require("@/assets/images/map.jpg")
+        }
+        className={`w-full  h-20 rounded-2xl mt-5  `}
+      /> */}
+
 
       <View className="p-6">
         <Text className="text-3xl font-outfit-bold">

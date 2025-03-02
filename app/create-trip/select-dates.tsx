@@ -72,10 +72,10 @@ const SelectDates = () => {
               color: "#000000",
             }}
             selectedRangeStartStyle={{
-              backgroundColor: "#C70039",
+              backgroundColor: "#F75A41",
             }}
             selectedRangeEndStyle={{
-              backgroundColor: "#C70039",
+              backgroundColor: "#F75A41",
             }}
             selectedRangeStyle={{
               backgroundColor: "#F75A41",

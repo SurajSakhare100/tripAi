@@ -8,6 +8,16 @@ import CustomButton from "@/components/CustomButton";
 const DEFAULT_IMAGE_URL =
   "https://images.unsplash.com/photo-1496417263034-38ec4f0b665a?q=80&w=2071&auto=format&fit=crop";
 
+const UNSPLASH_TRAVEL_IMAGES = [
+  "https://images.unsplash.com/photo-1506748686214-e9df14d4d9d0?q=80&w=2071&auto=format&fit=crop",
+  "https://images.unsplash.com/photo-1526772662000-3f88f10405ff?q=80&w=2071&auto=format&fit=crop",
+  "https://images.unsplash.com/photo-1618477202872-89cec6f8d62e?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8bmF0dXJlJTIwaW1hZ2V8ZW58MHx8MHx8fDA%3D",
+  "https://images.unsplash.com/photo-1473625247510-8ceb1760943f?q=80&w=2011&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+];
+
+const getRandomTravelImage = () => {
+  return UNSPLASH_TRAVEL_IMAGES[Math.floor(Math.random() * UNSPLASH_TRAVEL_IMAGES.length)];
+};
 const Discover = () => {
   const { tripData, tripPlan } = useLocalSearchParams();
   const [parsedTripData, setParsedTripData] = useState<any>(null);
@@ -26,10 +36,10 @@ const Discover = () => {
         const photoReference = data.results[0].photos[0].photo_reference;
         return `https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photo_reference=${photoReference}&key=${process.env.EXPO_PUBLIC_GOOGLE_MAP_KEY}`;
       }
-      return DEFAULT_IMAGE_URL;
+      return getRandomTravelImage();
     } catch (error) {
       console.error("Error fetching place image:", error);
-      return DEFAULT_IMAGE_URL;
+      return getRandomTravelImage();
     }
   };
 

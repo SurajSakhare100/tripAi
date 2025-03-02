@@ -31,25 +31,25 @@ const UserTripList = ({ userTrips }: { userTrips: any[] }) => {
     ?.travelers?.type;
 
   const isPastTrip = moment().isAfter(moment(endDate));
-
   return (
     <View className="mb-16">
       <View>
-        {locationInfo?.photoRef && (
-          <Image
-            source={{
-              uri: `https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photo_reference=${locationInfo?.photoRef}&key=${process.env.EXPO_PUBLIC_GOOGLE_MAP_KEY}`,
-            }}
-            className={`w-full h-60 rounded-2xl mt-5 ${
-              isPastTrip ? "grayscale" : ""
-            }`}
-          />
-        )}
+        <Image
+          source={{
+            uri: `https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8dHJpcHxlbnwwfHwwfHx8MA%3D%3D`  }}
+          className={`w-full h-60 rounded-2xl mt-5 ${isPastTrip ? "grayscale" : ""}`}
+        />
+        {/* <Image
+          source={
+            require("@/assets/images/map.jpg")
+          }
+          className={`w-full h-20 rounded-2xl ${isPastTrip ? "grayscale" : ""}`}
+        /> */}
+
         <View className="mt-3">
           <Text
-            className={`font-outfit-medium text-xl ${
-              isPastTrip ? "text-gray-500" : ""
-            }`}
+            className={`font-outfit-medium text-xl ${isPastTrip ? "text-gray-500" : ""
+              }`}
           >
             {sortedTrips[0]?.tripPlan?.trip_plan?.location}
           </Text>
