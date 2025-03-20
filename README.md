@@ -349,116 +349,7 @@ const styles = StyleSheet.create({
 export default HomeScreen;
 ```
 
-**Example 3: Handling User Input and Filtering Results**
-
-This example shows a basic search implementation, where a TextInput is used to capture user input and then filters a list of destinations based on the search term.  This example uses static data.
-
-```typescript
-// In app/screens/SearchScreen.tsx (or a separate component)
-import React, { useState } from 'react';
-import { View, TextInput, StyleSheet, FlatList, Text } from 'react-native';
-
-// Define a Destination interface
-interface Destination {
-  id: number;
-  name: string;
-  description: string;
-}
-
-const SearchScreen = () => {
-  const [searchTerm, setSearchTerm] = useState('');
-  const [searchResults, setSearchResults] = useState<Destination[]>([]);
-
-  // Static destination data (replace with API call in a real application)
-  const destinations: Destination[] = [
-    { id: 1, name: 'Paris, France', description: 'The city of love and lights.' },
-    { id: 2, name: 'Tokyo, Japan', description: 'A blend of tradition and modernity.' },
-    { id: 3, name: 'New York City, USA', description: 'The city that never sleeps.' },
-    { id: 4, name: 'London, England', description: 'A historic city with a modern flair.' },
-    { id: 5, name: 'Rome, Italy', description: 'Home to ancient ruins and vibrant culture.' },
-    { id: 6, name: 'Sydney, Australia', description: 'A harbor city with iconic landmarks.' },
-  ];
-
-  const handleSearch = () => {
-    const filteredResults = destinations.filter(destination =>
-      destination.name.toLowerCase().includes(searchTerm.toLowerCase())
-    );
-    setSearchResults(filteredResults);
-  };
-
-  return (
-    <View style={styles.container}>
-      <TextInput
-        style={styles.input}
-        placeholder="Search for a destination..."
-        value={searchTerm}
-        onChangeText={(text) => {
-          setSearchTerm(text);
-          // Consider adding a delay (debounce) before calling handleSearch for performance
-          handleSearch();
-        }}
-      />
-      {searchResults.length > 0 ? (
-        <FlatList
-          data={searchResults}
-          keyExtractor={(item) => item.id.toString()}
-          renderItem={({ item }) => (
-            <View style={styles.resultItem}>
-              <Text style={styles.resultName}>{item.name}</Text>
-              <Text style={styles.resultDescription}>{item.description}</Text>
-            </View>
-          )}
-        />
-      ) : (
-        <Text style={styles.noResultsText}>No results found for "{searchTerm}"</Text>
-      )}
-    </View>
-  );
-};
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    padding: 20,
-    backgroundColor: '#fff',
-  },
-  input: {
-    height: 45,
-    borderColor: '#ccc',
-    borderWidth: 1,
-    marginBottom: 15,
-    paddingHorizontal: 15,
-    borderRadius: 8,
-    fontSize: 16,
-  },
-  resultItem: {
-    padding: 15,
-    borderBottomWidth: 1,
-    borderBottomColor: '#eee',
-  },
-  resultName: {
-    fontSize: 18,
-    fontWeight: 'bold',
-    color: '#333',
-  },
-  resultDescription: {
-    fontSize: 14,
-    color: '#666',
-  },
-  noResultsText: {
-    fontSize: 16,
-    color: '#888',
-    textAlign: 'center',
-    marginTop: 20,
-  },
-});
-
-export default SearchScreen;
-```
-
----
-
-## 4. Project Structure 📂
+## 3. Project Structure 📂
 
 The project structure is organized following Expo's conventions, leveraging the file-based routing mechanism offered by `expo-router`. This promotes a clear and maintainable codebase.
 
@@ -511,7 +402,7 @@ tripAi/
 
 ---
 
-## 5. Contributing 🤝
+## 4. Contributing 🤝
 
 We are enthusiastic about welcoming contributions from the community to enhance tripAi! Please adhere to the following guidelines to ensure a smooth and collaborative process:
 
@@ -525,7 +416,7 @@ We are enthusiastic about welcoming contributions from the community to enhance 
 
 ---
 
-## 6. License 📝
+## 5. License 📝
 
 The licensing for tripAi is currently under review and will be determined shortly. We are evaluating the following options to find the most appropriate license for the project:
 
